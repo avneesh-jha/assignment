@@ -26,7 +26,6 @@ dict_country_replace = {
     "China, Hong Kong Special Administrative Region": "Hong Kong",
 }
 energy_data["Country"] = energy_data["Country"].replace(dict_country_replace)
-# energy_data["Country"] = energy_data["Country"].apply((lambda x: x.replace(" ", "")))
 energy_data["Country"] = energy_data["Country"].transform(
     lambda x: re.sub(r"\([^)]*\)", "", x)
 )
