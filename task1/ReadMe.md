@@ -14,3 +14,6 @@ Developed Python script that processes DICOM (Digital Imaging and Communications
 Medicine) files. It extracts metadata and converts the pixel data of DICOM images into a visually
 simplified form, saving the result as a PNG image. Additionally, it exports the metadata of each
 DICOM file to a separate JSON file.
+
+
+[embed]https://github.com/avneesh-jha/assignment/blob/main/task1/Task-1_flow_chart.pdf[/embed]
