@@ -8,14 +8,14 @@ from datetime import datetime, timedelta
 energy_data = pd.read_excel(
     r"task2/Data/Energy_Indicators.xls", skiprows=17, skipfooter=38
 )
-energy_data = energy_data[["Unnamed: 2", "Petajoules", "Gigajoules", "%"]]
+energy_data = energy_data[["Unnamed: 1", "Petajoules", "Gigajoules", "%"]]
 
 previous_names = energy_data.columns
 new_names = ["Country", "Energy Supply", "Energy Supply per Capita", "% Renewable's"]
-
 renaming = dict(zip(previous_names, new_names))
 energy_data.rename(columns=renaming, inplace=True)
-energy_data.replace("...", np.nan, inplace=True)
+energy_data['Energy Supply'] = energy_data['Energy Supply'].replace("...", np.nan)
+energy_data['Energy Supply per Capita'] = energy_data['Energy Supply per Capita'].replace("...", np.nan)
 energy_data["Energy Supply"] = energy_data["Energy Supply"].transform(
     lambda x: x * 1000000
 )
@@ -24,17 +24,22 @@ dict_country_replace = {
     "United States of America": "United States",
     "United Kingdom of Great Britain and Northern Ireland": "United Kingdom",
     "China, Hong Kong Special Administrative Region": "Hong Kong",
+    "Iran (Islamic Republic of)": "Iran",
 }
 energy_data["Country"] = energy_data["Country"].replace(dict_country_replace)
 energy_data["Country"] = energy_data["Country"].transform(
     lambda x: re.sub(r"\([^)]*\)", "", x)
 )
 
+# energy_data['Country'] = energy_data['Country'].replace(" ", '')
+
 # Load Transform and clean world bank data
 
 GDP = pd.read_csv("task2\Data\API_NY.GDP.MKTP.CD_DS2_en_csv_v2_5871885.csv", skiprows=4)
 
+
 GDP.rename(columns={"Country Name": "Country"}, inplace=True)
+
 
 GDP["Country"] = GDP["Country"].replace(
     {
@@ -60,7 +65,7 @@ ScimEn = ScimEn[ScimEn["Rank"] <= 15]
 energy_ScimEn = ScimEn.merge(energy_data, how="left", on="Country")
 
 # current_year = datetime.now().year
-current_year = datetime(2015, 1, 1).year
+current_year = datetime(2022, 1, 1).year
 
 # Create a list of string values for the last 10 years
 last_ten_years = [str(year) for year in range(current_year - 9, current_year + 1, 1)]
