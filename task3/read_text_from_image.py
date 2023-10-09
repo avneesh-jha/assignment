@@ -1,11 +1,9 @@
-from io import StringIO
 import cv2
 import numpy as np
 from PIL import Image
 import pandas as pd
 import easyocr
 import os
-import pandas as pd
 
 
 reader = easyocr.Reader(["en"], gpu=True)

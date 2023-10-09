@@ -31,8 +31,6 @@ energy_data["Country"] = energy_data["Country"].transform(
     lambda x: re.sub(r"\([^)]*\)", "", x)
 )
 
-# energy_data['Country'] = energy_data['Country'].replace(" ", '')
-
 # Load Transform and clean world bank data
 
 GDP = pd.read_csv("task2\Data\API_NY.GDP.MKTP.CD_DS2_en_csv_v2_5871885.csv", skiprows=4)
@@ -64,7 +62,6 @@ ScimEn = ScimEn[ScimEn["Rank"] <= 15]
 
 energy_ScimEn = ScimEn.merge(energy_data, how="left", on="Country")
 
-# current_year = datetime.now().year
 current_year = datetime(2022, 1, 1).year
 
 # Create a list of string values for the last 10 years
