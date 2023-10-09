@@ -11,3 +11,5 @@ SOLUTION:
 Developed Python script that is performing the ETL (Extract Transform Load) on
 different file types like .xlsx and .csv and then merging the all data and saving the data into a new
 file(.csv)
+
+![image](https://github.com/avneesh-jha/assignment/blob/main/Raw_data/Task-2_flow_chart-1.png)
