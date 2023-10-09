@@ -16,4 +16,4 @@ simplified form, saving the result as a PNG image. Additionally, it exports the 
 DICOM file to a separate JSON file.
 
 
-[embed]https://github.com/avneesh-jha/assignment/blob/main/task1/Task-1_flow_chart.pdf[/embed]
+![Alt text]((https://github.com/avneesh-jha/assignment/blob/main/Raw_data/Task-1_flow_chart-1.png)https://github.com/avneesh-jha/assignment/blob/main/Raw_data/Task-1_flow_chart-1.png)
